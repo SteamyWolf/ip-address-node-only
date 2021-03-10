@@ -4,6 +4,16 @@ const fetch = require('node-fetch');
 const Location = require('../models/locationModel');
 
 //ROUTES//
+
+router.get('/favorites', async (req, res, next) => {
+    try {
+        let response = await Location.find();
+        res.json(response)
+    } catch (err) {
+        res.json(err)
+    }
+})
+
 router.get('/:ip', async (req, res, next) => {
     console.log(req.params.ip)
     let response = await fetch(`http://ip-api.com/json/${req.params.ip}`);
@@ -24,6 +34,17 @@ router.post('/saveLocation', async (req, res, next) => {
     })
     let savedLocation = await location.save();
     res.json(savedLocation)
+})
+
+router.delete('/delete/:id', async (req, res, next) => {
+    console.log(req.params)
+    let id = req.params.id
+    try {
+        let response = await Location.findByIdAndDelete(id)
+        res.json(response)
+    } catch (err) {
+        console.log(err)
+    }
 })
 
 module.exports = router;
