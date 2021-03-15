@@ -36,6 +36,22 @@ router.post('/saveLocation', async (req, res, next) => {
     res.json(savedLocation)
 })
 
+router.put('/put', async (req, res, next) => {
+    console.log(req.body)
+    await Location.findByIdAndDelete(req.body._id);
+
+    let location = new Location({
+            ip: req.body.ip, 
+            country: req.body.country, 
+            city: req.body.city, 
+            region: req.body.region, 
+            timezone: req.body.timezone, 
+            organization: req.body.organization
+        });
+    let addedLocation = await location.save();
+    res.json(addedLocation);
+})
+
 router.delete('/delete/:id', async (req, res, next) => {
     console.log(req.params)
     let id = req.params.id
