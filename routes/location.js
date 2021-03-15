@@ -27,7 +27,7 @@ router.post('/saveLocation', async (req, res, next) => {
     const location = new Location({
         ip: req.body.ip,
         country: req.body.country,
-        city: req.body.country,
+        city: req.body.city,
         region: req.body.region,
         timezone: req.body.timezone,
         organization: req.body.organization
