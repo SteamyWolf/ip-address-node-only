@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 require('dotenv/config');
 
 const port = process.env.PORT || 3000;
+app.use(cors(corsOptions));
 
 const LocationRoutes = require('./routes/location');
 
@@ -17,7 +18,6 @@ var corsOptions = {
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-app.use(cors(corsOptions));
 
 //Middleware//
 app.use(express.urlencoded({ extended: true }));
