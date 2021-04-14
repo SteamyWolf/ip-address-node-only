@@ -23,4 +23,4 @@ The PUT request is sent to save an edited IP Address document to the database. T
 
 ## DELETE
 DELETE request: `https://ip-address-app-wyatt.herokuapp.com/delete/:id`
-The delete request will find the correct IP Address id from the database and simply delete it. It will return an error if you sent an ip address over that is not already saved in the database. All returning information is either the deleted IP or the error code all as JSON format. 
+The delete request will find the correct IP Address id from the database and simply delete it. It will return an error if you sent an ip address over that is not already saved in the database. All returning information is either the deleted IP or the error code all as JSON format.
